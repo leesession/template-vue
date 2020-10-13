@@ -3,10 +3,9 @@
 
 import Vue from 'vue'
 import request from './request'
-import API from '../api'
 
 let services = function (url,options = {}) {
-    return request(Object.assign(options,{url:API[url]}))
+    return request(Object.assign(options,{url}))
 }
 
 // 将services挂载到vue的原型上

@@ -1,5 +1,4 @@
 const path = require('path')
-const Timestamp = new Date().getTime();
 
 module.exports = {
     // 部署应用包时的基本 URL,用法和 webpack 本身的 output.publicPath 一致
@@ -30,12 +29,6 @@ module.exports = {
             config.mode = 'development'
         }
     },
-    configureWebpack:{
-        output: { // 输出重构  打包编译后的 文件名称  【模块名称.时间戳】
-            filename: `static/js/[name].${Timestamp}.js`,
-            chunkFilename: `static/js/[name].${Timestamp}.js`
-        }
-    },
     // css相关配置
     css: {
         // 是否分离css（插件ExtractTextPlugin）
@@ -61,21 +54,21 @@ module.exports = {
     },
     // webpack-dev-server 相关配置
     devServer: {
-        open: true,
+        open: false,
         host: 'localhost',
         port: 8080,
         https: false,
         hotOnly: false,
         // http 代理配置
-        proxy: {
-            '/api': {
-                target: '',
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/api': ''
-                }
-            }
-        },
+        // proxy: {
+        //     '/api': {
+        //         target: '',
+        //         changeOrigin: true,
+        //         pathRewrite: {
+        //             '^/api': ''
+        //         }
+        //     }
+        // },
         before: (app) => { }
     },
     // 第三方插件配置
